@@ -38,17 +38,4 @@ CREATE TABLE employee (
      ON DELETE SET NULL
 );
 
--- Sample Data for Departments Table
-INSERT INTO departments (name) VALUES
-    ('Engineering'),
-    ('Marketing'),
-    ('Finance');
-
--- Sample Data for Roles Table
-INSERT INTO roles (title, salary, department_id) VALUES
-    ('Software Engineer', 80000, 1),
-    ('Marketing Manager', 70000, 2),
-    ('Financial Analyst', 65000, 3);
-
--- Note: Sample data for employees can be added as per your requirements.
 

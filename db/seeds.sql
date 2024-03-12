@@ -1,8 +1,8 @@
 USE employee_db;
 INSERT INTO department(name)
 VALUES('Sales'), //1
-      ('Engineering')
-//2
+      ('Engineering'), //2
+      ('')
 
       INSERT INTO role(title,department_id,salary)
       VALUES('Sales Lead', 1, 100000),
