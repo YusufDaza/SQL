@@ -3,9 +3,9 @@ INSERT INTO department(name)
 VALUES('Sales'), //1
       ('Engineering'), //2
       ('Finance'), //3
-      ('Legal'), //4
+      ('Legal'), //4;
 
-      INSERT INTO role(title,department_id,salary)
+      INSERT INTO role(title, department_id, salary)
       VALUES('Sales Lead',1, 100000),
       ('Salesperson',1, 80000),
       ('Lead Engineer',2, 150000),
@@ -13,7 +13,7 @@ VALUES('Sales'), //1
       ('Account Manager',3, 160000),
       ('Accountant',3, 125000),
       ('Legal Team Lead',4, 250000),
-      ('Lawyer',4, 190000)
+      ('Lawyer',4, 190000);
       
       INSERT INTO employee(first_name, last_name, role_id)
       VALUES
@@ -24,7 +24,7 @@ VALUES('Sales'), //1
       ('Kunal', 'Singh',3),
       ('Malia', 'Brown',3),
       ('Sarah', 'Lourd',4),
-      ('Tom', 'Allen',4)
+      ('Tom', 'Allen',4);
 
 
-      UPDATE employee set manager_id=1 where id=2
+      UPDATE employee set manager_id=1 where id=2;
