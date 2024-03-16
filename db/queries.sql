@@ -2,7 +2,8 @@ USE  employeee_db;
 
 SELECT * FROM department;
 
-SELECT role.id as title, name as department, salary FROM role;
+SELECT role.id as title, name as department, salary 
+FROM role
 LEFT JOIN department 
 ON role.department_id=department.id;
 
