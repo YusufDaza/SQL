@@ -23,40 +23,40 @@ function menu() {
             message: "What would you like to do?",
             name: "option",
             choices: [
-                "View all departments",
-                "View all roles",
-                "View all employees",
-                "Add a department",
-                "Add a role",
-                "Add an employee",
-                "Update an employee role",
-                "Quit"
+                { name: "View all departments", value: "viewDepartments" },
+                { name: "View all roles", value: "viewRoles" },
+                { name: "View all employees", value: "viewEmployees" },
+                { name: "Add a department", value: "addDepartment" },
+                { name: "Add a role", value: "addRole" },
+                { name: "Add an employee", value: "addEmployee" },
+                { name: "Update an employee role", value: "updateEmployeeRole" },
+                { name: "Quit", value: "quit" }
             ]
         }
     ]).then(response => {
         switch (response.option) {
-            case "View all departments":
+            case "viewDepartments":
                 viewAllDepartments();
                 break;
-            case "View all roles":
+            case "viewRoles":
                 viewAllRoles();
                 break;
-            case "View all employees":
+            case "viewEmployees":
                 viewAllEmployees();
                 break;
-            case "Add a department":
+            case "addDepartment":
                 addDepartment();
                 break;
-            case "Add a role":
+            case "addRole":
                 addRole();
                 break;
-            case "Add an employee":
+            case "addEmployee":
                 addEmployee();
                 break;
-            case "Update an employee role":
+            case "updateEmployeeRole":
                 updateEmployeeRole();
                 break;
-            case "Quit":
+            case "quit":
                 console.log("Exiting the application.");
                 db.end(); // Close the database connection
                 process.exit(0);
@@ -107,7 +107,7 @@ function addDepartment() {
             name: "name"
         }
     ]).then(response => {
-        db.query("INSERT INTO department (name) VALUES (?)", [response.name], (err, result) => {
+        db.query("INSERT INTO department (name) VALUES (?)", [response.name], (err) => {
             if (err) throw err;
             console.log(`Department ${response.name} added successfully!`);
             menu();
@@ -142,7 +142,7 @@ function addRole() {
         ]).then(response => {
             db.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)",
                 [response.title, response.salary, response.department_id],
-                (err, result) => {
+                (err) => {
                     if (err) throw err;
                     console.log(`Role ${response.title} added successfully!`);
                     menu();
@@ -191,7 +191,7 @@ function addEmployee() {
             ]).then(response => {
                 db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
                     [response.first_name, response.last_name, response.role_id, response.manager_id],
-                    (err, result) => {
+                    (err) => {
                         if (err) throw err;
                         console.log(`Employee ${response.first_name} ${response.last_name} added successfully!`);
                         menu();
@@ -231,7 +231,7 @@ function updateEmployeeRole() {
             ]).then(response => {
                 db.query("UPDATE employee SET role_id = ? WHERE id = ?",
                     [response.role_id, response.employee_id],
-                    (err, result) => {
+                    (err) => {
                         if (err) throw err;
                         console.log("Employee role updated successfully!");
                         menu();
